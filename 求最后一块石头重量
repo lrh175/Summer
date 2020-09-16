@@ -1,0 +1,25 @@
+/ *求最后一块石头的重量
+  假设回石的重量分别为x和y，且x <= y那么碾碎，则每一堆石头，每块石头的重量都是正整数。每个回合，从中选出两块最重的石头，然后将它们一起粉碎。的可能结果如下：
+  如果x == y，那么两块石头都会被完全粉碎；如果x！= y，那么重量为x的石头将会完全粉碎，而重量为y的石头新重量为yx 
+  最后，最多只会剩下一块石头。返回此石头的重量。
+  如果没有石头剩下，就返回0。
+/ *思路：用递归归的方法解决。先将数组从大到小排列，分开后若stones [1] = 0，则完成；用stones [0]石头[1]，并让stones [1] = 0。递归。
+
+
+/ *
+  int lastStoneWeight（int *宝石，int stoneSize）{
+    if（stonesSize == 1）返回stone [0];
+    简短的i，j，tmp;
+    for（i = 0; i <stonesSize; i ++）
+        for（j = i + 1; j <stonesSize; j ++）
+            if（stones [j]> stones [i]）{
+                tmp = stones [j];
+                宝石[j] =宝石[i]；
+                石头[i] = tmp;
+            }
+    if（stones [1] == 0）返回0;
+    宝石[0] =宝石[0]-宝石[1]；
+    宝石[1] = 0；
+    lastStoneWeight（stones，stonesSize）;
+    返回石头[0];
+  }
